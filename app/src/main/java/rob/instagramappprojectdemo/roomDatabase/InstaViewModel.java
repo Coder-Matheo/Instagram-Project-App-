@@ -1,9 +1,12 @@
-package rob.instagramappprojectdemo;
+package rob.instagramappprojectdemo.roomDatabase;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import java.util.List;
 
 public class InstaViewModel extends AndroidViewModel {
     MyInstaDatabase myInstaDatabase;
@@ -15,5 +18,7 @@ public class InstaViewModel extends AndroidViewModel {
 
     }
 
-
+    public LiveData<List<InstaObj>> getAllPosts(){
+        return myInstaDatabase.instaDao().getAllPosts();
+    }
 }

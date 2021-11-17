@@ -1,4 +1,4 @@
-package rob.instagramappprojectdemo;
+package rob.instagramappprojectdemo.roomDatabase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -21,17 +21,18 @@ public class InstaObj {
     @ColumnInfo(name = "postMessage")
     private String postMessage;
 
-
+    @ColumnInfo(name = "date_time")
+    private String dateTime;
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] instaImage;
 
-    public InstaObj(String username, String password, String comments, String postMessage, byte[] instaImage) {
+    public InstaObj(String username, String password, String comments, String postMessage,String dateTime, byte[] instaImage) {
         this.username = username;
         this.password = password;
         this.comments = comments;
         this.postMessage = postMessage;
-        
+        this.dateTime = dateTime;
         this.instaImage = instaImage;
     }
 
@@ -76,7 +77,13 @@ public class InstaObj {
         this.postMessage = postMessage;
     }
 
- 
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
 
     public byte[] getInstaImage() {
         return instaImage;

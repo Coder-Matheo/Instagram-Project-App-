@@ -1,4 +1,4 @@
-package rob.instagramappprojectdemo;
+package rob.instagramappprojectdemo.roomDatabase;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ public abstract class MyInstaDatabase extends RoomDatabase {
 
 
     //Build Database and getInstance from Database
-    static MyInstaDatabase getInstance(Context context) {
+    public static MyInstaDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             synchronized (MyInstaDatabase.class){
                 if (INSTANCE == null){
