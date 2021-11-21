@@ -1,5 +1,7 @@
 package rob.instagramappprojectdemo.Adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,8 +46,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.imagePostForRowItem.setImageBitmap(byteImageToBitmap(imagePostForRecycler.get(position)));
         holder.postMessageForRowItem.setText(String.valueOf(position));
         holder.commentsForRowItem.setText(commentsForRecycler.get(position));
+    }
+    public Bitmap byteImageToBitmap(byte[] imgOfByteParam){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imgOfByteParam, 0, imgOfByteParam.length);
+        return bitmap;
     }
 
     @Override

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground">
+    android:layout_marginTop="10dp"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/imagePostImageView"
-        android:layout_height="wrap_content"
         android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginTop="0dp"
-        tools:srcCompat="@tools:sample/avatars"/>
+        tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -25,14 +26,14 @@
             android:text="Hallo this is comments"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="30sp" />
+
         <TextView
             android:id="@+id/commentsTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="comments"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:layout_marginTop="7dp"
-            />
+            android:text="comments"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
 
 

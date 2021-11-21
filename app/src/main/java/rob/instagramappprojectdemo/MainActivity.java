@@ -20,7 +20,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.ViewPager;
 
+import rob.instagramappprojectdemo.Adapters.RecyclerAdapter;
 import rob.instagramappprojectdemo.databinding.ActivityMainBinding;
 
 import android.view.Menu;
@@ -36,7 +38,7 @@ import rob.instagramappprojectdemo.roomDatabase.MyInstaDatabase;
 import rob.instagramappprojectdemo.Adapters.InitialRecyclerView_Adapter;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DatabaseRepresent {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     InstaViewModel instaViewModel;
     InitialRecyclerView_Adapter initRecyclerView_adapter;
+    public static String Tag = MainActivity.class.getSimpleName();
 
 
     @Override
@@ -59,16 +62,16 @@ public class MainActivity extends AppCompatActivity {
         init();
         insertPostsFun();
         getAllPostsFun();
-        invokeRecyclerView_Adapter();
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        //setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,10 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         initRecyclerView_adapter = new InitialRecyclerView_Adapter(this, this);
         initRecyclerView_adapter.initial();
-
-
-
-
     }
 
     public void init(){
@@ -155,13 +154,12 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-    private void getAllPostsFun() {
+    public void getAllPostsFun() {
         instaViewModel = ViewModelProviders.of(this).get(InstaViewModel.class);
         instaViewModel.getAllPosts().observe(this, new Observer<List<InstaObj>>() {
             @Override
             public void onChanged(List<InstaObj> instaObjs) {
-                Log.i(TAG, "onChanged: "+ instaObjs.size());
-                Log.i(TAG, "onChanged: "+ instaObjs.get(0).getComments());
+
                 for (int i = 0; i < instaObjs.size(); i++){
                     usernameToInitRecycler.add(instaObjs.get(i).getUsername());
                     commentsToInitRecycler.add(instaObjs.get(i).getComments());
@@ -179,8 +177,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void invokeRecyclerView_Adapter(){
 
-    }
+
+
 
 }
